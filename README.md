@@ -12,8 +12,11 @@ analizado se procesa distinto segun el caso:
 3. Cierra parentesis
     -> Vaciamos operadores de la pila a la expresion hasta encontrar un parentesis
 4. Operador matematico
+
     a) Mayor prioridad que el ultimo operador, agregamos el componente a la pila
+
     b) Prioridad es menor o igual, vaciamos la pila entera a la expresion
+
     Nota: Los parentesis se ignorar al vaciar la pila y su prioridad se ignora
 
 Para identificar los componentes, se empleo expresiones regulares de un string[],
@@ -28,8 +31,11 @@ y un switch determina que proceso ejecutar segun el enum del caso. Finalmente, s
 el ultimo numero que la pila almacena.
 
 Algunas limitaciones a considerar es la falta de manejo de excepciones para:
+    
     a) Division entre 0
+    
     b) Parentesis incompletos
+    
     c) Operandos y operadores sobra Ej. "7 + 8 +" o "1 + 8 15"
 
 Se incluyen algunos ejemplos como demostracion. Para probar el algoritmo se inicializa
@@ -52,11 +58,15 @@ Para lograr esta solucion, consideremos como podriamos insertar un elemento al f
 Podriamos utilizar pop() hasta vaciarla, pero perderiamos los datos previamente ordenados. Podemos
 almacenar dichos datos en otra pila para desocupar la pila principal. Por ejemplo:
 
-1. mainStack = [A-B-C   ; tempStack = [      ;  Queue.enqueue(X)
-2. mainStack = [A-B     ; tempStack = [C     ;  Iterar tempStack.push( mainStack.pop() )
-3. mainStack = [        ; tempStack = [C-B-A ;  Pasar de un stack a otro invierte el orden
-4. mainStack = [X       ; tempStack = [C-B-A ;  Podemos regresar elementos tras incluir X
-5. mainStack = [X-A-B-C ; tempStack = [      ;  Finalmente, replicamos enqueue() con stacks
+    a) mainStack = [A-B-C   ; tempStack = [      ;  Queue.enqueue(X)
+
+    b) mainStack = [A-B     ; tempStack = [C     ;  Iterar tempStack.push( mainStack.pop() )
+
+    c) mainStack = [        ; tempStack = [C-B-A ;  Pasar de un stack a otro invierte el orden
+
+    d) mainStack = [X       ; tempStack = [C-B-A ;  Podemos regresar elementos tras incluir X
+
+    e) mainStack = [X-A-B-C ; tempStack = [      ;  Finalmente, replicamos enqueue() con stacks
 
 Nuevamente, se incluye un ejemplo en el main.cpp que compara los structs Queue y QueueStacks
 para efectos de prueba.
