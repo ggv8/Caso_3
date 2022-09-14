@@ -38,6 +38,10 @@ class Airport
 
                 Flight* newFlight = new Flight(count+1, randHour, randMin);
                 flightQueue->enqueue(newFlight, newFlight->getTimeValue());
+                
+                // Test print for getTimeValue()
+                // std::cout << "Flight #" << newFlight->getFlightID();
+                // std::cout << " T.Value:" << newFlight->getTimeValue();
             }
         }
 
