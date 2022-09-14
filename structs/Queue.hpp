@@ -4,6 +4,9 @@
 template<class T>
 class Queue
 {
+    private:
+        List<T>* queueList;
+    
     public:
         Queue() {
             queueList = new List<T>;
@@ -25,6 +28,5 @@ class Queue
             return queueList->remove(0);
         }
 
-    private:
-        List<T>* queueList;
+    
 };

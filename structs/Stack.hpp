@@ -4,6 +4,9 @@
 template<class T>
 class Stack
 {
+    private:
+        List<T>* stackList;
+    
     public:
         Stack() {
             stackList = new List<T>;
@@ -24,7 +27,4 @@ class Stack
         T* pop() {
             return stackList->remove(0);
         }
-
-    private:
-        List<T>* stackList;
 };

@@ -3,11 +3,12 @@
 template<class T>
 struct Node
 {
-    T* data;
-    Node* prev;
-    Node* next;
+    public:
+        T* data;
+        Node* prev;
+        Node* next;
 
-    Node(T* pData)
-    : data(pData), prev(NULL), next(NULL)
-    {}
+        Node(T* pData)
+        : data(pData), prev(NULL), next(NULL)
+        {}
 };

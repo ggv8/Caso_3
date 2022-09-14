@@ -6,6 +6,23 @@
 template<class T>
 class List
 {
+    private:
+        Node<T>* head;
+        Node<T>* tail;
+        int size;
+
+        Node<T>* getNode(int pIndex) {
+            if ( pIndex < size ) {
+                Node<T>* current = head;
+                while (pIndex > 0) {    // Link hops until pIndex runs out
+                    current = current->next;
+                    pIndex--;
+                }
+                return current;
+            }
+            return NULL;
+        }
+
     public:
         List() {
             size = 0;
@@ -21,7 +38,11 @@ class List
             return size == 0;
         }
 
-        void clear();
+        void clear() {
+            while (! isEmpty()) {
+                remove(0);
+            }
+        }
 
         const T* getFirst() const {
             return head->data;
@@ -58,6 +79,8 @@ class List
                     Node<T>* prior = getNode(pIndex - 1);
                     Node<T>* after = prior->next;
                     prior->next = after->prev = newNode;
+                    newNode->prev = prior;
+                    newNode->next = after;
                 } else {            // Head Insert if (0 || Negative OutOfBounds)
                     newNode->next = head;
                     head->prev = newNode;
@@ -72,7 +95,7 @@ class List
         T* get(int pIndex) {
             Node<T>* search = getNode(pIndex);
             if (search != NULL) {
-                return search->getData();
+                return search->data;
             } else {
                 return NULL;
             }
@@ -114,22 +137,5 @@ class List
                 size--;
             }
             return result;
-        }
-    
-    private:
-        Node<T>* head;
-        Node<T>* tail;
-        int size;
-
-        Node<T>* getNode(int pIndex) {
-            if ( pIndex < size ) {
-                Node<T>* current = head;
-                while (pIndex > 0) {    // Link hops until pIndex runs out
-                    current = current->next;
-                    pIndex--;
-                }
-                return current;
-            }
-            return NULL;
         }
 };

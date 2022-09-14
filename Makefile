@@ -1,11 +1,22 @@
 CC = g++
 CFLAGS = -Wall -g
 
-main: main.o PostfixParser.o
-	$(CC) $(CFLAGS) -o main main.o PostfixParser.o
+main: main.o
+	$(CC) $(CFLAGS) -o main main.o
 
-main.o: main.cpp structs/QueueStacks.hpp structs/Queue.hpp Postfix/PostfixParser.hpp
+main.o: main.cpp PostfixParser QueueStacks Queue Airport
 	$(CC) $(CFLAGS) -c main.cpp
 
-PostfixParser.o: Postfix/PostfixParser.cpp Postfix/PostfixParser.hpp
-	$(CC) $(CFLAGS) -c Postfix/PostfixParser.cpp
+PostfixParser: Postfix/PostfixParser.hpp
+
+QueueStacks: structs/QueueStacks.hpp Stack
+
+Queue: structs/Queue.hpp List
+
+Stack: structs/Stack.hpp List
+
+List: structs/List.hpp structs/Node.hpp
+
+Airport: Airport/Airport.hpp Airport/Flight.hpp PriorityQueue
+
+PriorityQueue: structs/PriorityQueue.hpp structs/PriorityNode.hpp

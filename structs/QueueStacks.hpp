@@ -4,6 +4,9 @@
 template<class T>
 class QueueStacks
 {
+    private:
+        Stack<T>* mainStack;
+
     public:
         QueueStacks() {
             mainStack = new Stack<T>;
@@ -35,7 +38,4 @@ class QueueStacks
         T* dequeue() {
             return mainStack->pop();
         }
-
-    private:
-        Stack<T>* mainStack;
 };
